@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "timezone": "Asia/Kolkata",
+  "automatic_reminders": false,
+  "reviews": [
+    {
+      "id": "R001",
+      "topic_id": "M02.03",
+      "question_ids": [
+        "Q01",
+        "Q02",
+        "Q03"
+      ],
+      "scheduled_for": null,
+      "timing": "next suitable session, optional before or after the new lesson",
+      "reason": "Guided immediate understanding; independent and delayed recall untested",
+      "status": "candidate"
+    },
+    {
+      "id": "R002",
+      "topic_id": "M03.02",
+      "question_ids": [
+        "Q04",
+        "Q05"
+      ],
+      "scheduled_for": null,
+      "timing": "after worked mask explanation",
+      "reason": "Correct recognition but no independent subnet calculation",
+      "status": "candidate"
+    },
+    {
+      "id": "R003",
+      "topic_id": "M02.02",
+      "question_ids": [
+        "Q06"
+      ],
+      "scheduled_for": null,
+      "timing": "after coherent switching lesson",
+      "reason": "New teaching target; do not quiz before explaining",
+      "status": "candidate"
+    }
+  ]
+}

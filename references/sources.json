@@ -1,0 +1,249 @@
+{
+  "schema_version": 1,
+  "retrieval_date": "2026-10-29",
+  "sources": [
+    {
+      "id": "OAI-AGENTS",
+      "title": "OpenAI: Custom instructions with AGENTS.md",
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md",
+      "verification": "verified",
+      "scope": "Project instruction discovery; not a promise about this learner's client access.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "OAI-SKILLS",
+      "title": "OpenAI: Build skills",
+      "url": "https://learn.chatgpt.com/docs/build-skills",
+      "verification": "verified",
+      "scope": "SKILL.md format and .agents/skills repository discovery; no installation performed.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "RFC826",
+      "title": "IETF/RFC Editor: Ethernet Address Resolution Protocol",
+      "url": "https://www.rfc-editor.org/rfc/rfc826.html",
+      "verification": "verified",
+      "scope": "ARP message structure and ordinary request/reply behavior.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "RFC1122",
+      "title": "IETF/RFC Editor: Requirements for Internet Hosts",
+      "url": "https://www.rfc-editor.org/rfc/rfc1122.html",
+      "verification": "verified",
+      "scope": "Host layers, next-hop reasoning, ARP requirements; consult newer protocol updates where relevant.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "RFC1812",
+      "title": "IETF/RFC Editor: Requirements for IPv4 Routers",
+      "url": "https://www.rfc-editor.org/rfc/rfc1812.html",
+      "verification": "verified",
+      "scope": "IPv4 forwarding principles; not a vendor configuration guide.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "RFC9293",
+      "title": "IETF/RFC Editor: TCP",
+      "url": "https://www.rfc-editor.org/rfc/rfc9293.html",
+      "verification": "verified",
+      "scope": "TCP transport and byte-stream model.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "CISCO-ARP",
+      "title": "Cisco: Address Resolution Protocol configuration guide",
+      "url": "https://www.cisco.com/c/en/us/td/docs/routers/ios-xe/ip-addressing/ip-addressing/m_arp-config-arp-0.html",
+      "verification": "verified",
+      "scope": "ARP caching and local/remote resolution concepts; no default timer generalized to all systems.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "CISCO-SWITCH",
+      "title": "Cisco Press: The MAC Address Table",
+      "url": "https://www.ciscopress.com/articles/article.asp?p=3089352&seqNum=6",
+      "verification": "verified",
+      "scope": "Source learning and frame forwarding/flooding.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "IP-NEIGH",
+      "title": "iproute2 manual: ip-neighbour",
+      "url": "https://man7.org/linux/man-pages/man8/ip-neighbour.8.html",
+      "verification": "verified",
+      "scope": "Linux neighbor entries and states; upstream manual reproduced by man7.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "IP-NETNS",
+      "title": "iproute2 manual: ip-netns",
+      "url": "https://man7.org/linux/man-pages/man8/ip-netns.8.html",
+      "verification": "verified",
+      "scope": "Network namespace commands; upstream manual reproduced by man7.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "PY-IPADDRESS",
+      "title": "Python standard library: ipaddress",
+      "url": "https://docs.python.org/3/library/ipaddress.html",
+      "verification": "verified",
+      "scope": "Address manipulation API; included utilities use standard-library functionality.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "CHAI-INDEX",
+      "title": "Chai aur Computer Network course index",
+      "url": "https://dsa.chaicode.com/videos/chai-aur-computer-network/1",
+      "verification": "verified_index_only",
+      "scope": "Index lists 49 videos; not all video content reviewed. Learner completion unknown.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "UMASS-LABS",
+      "title": "Kurose and Ross: Wireshark labs",
+      "url": "https://gaia.cs.umass.edu/kurose_ross/wireshark.php",
+      "verification": "verified_index_only",
+      "scope": "Author-provided lab index; linked lab PDFs not analyzed or bundled.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "CS144",
+      "title": "Stanford CS144 course site",
+      "url": "https://cs144.github.io/",
+      "verification": "verified_index_only",
+      "scope": "Course/lab index; external assignments not reproduced or completed.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "LINUX-SCALING",
+      "title": "Linux kernel: Scaling in the networking stack",
+      "url": "https://docs.kernel.org/networking/scaling.html",
+      "verification": "verified",
+      "scope": "RSS/RPS/RFS/XPS source for later hardware/host lessons.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "K8S-NETWORK",
+      "title": "Kubernetes: Services, load balancing, and networking",
+      "url": "https://kubernetes.io/docs/concepts/services-networking/",
+      "verification": "verified",
+      "scope": "Platform documentation entry point; verify actual cluster version/CNI before implementation claims.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "AWS-VPC",
+      "title": "AWS: What is Amazon VPC?",
+      "url": "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html",
+      "verification": "verified",
+      "scope": "VPC documentation entry point; cloud specifics must not be replaced by naive Ethernet assumptions.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "AWS-ANS",
+      "title": "AWS Advanced Networking certification",
+      "url": "https://aws.amazon.com/certification/certified-advanced-networking-specialty/",
+      "verification": "verified",
+      "scope": "Vendor states last exam date December 31, 2026; learning content can remain useful after retirement.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "CISCO-CCNA",
+      "title": "Cisco CCNA certification",
+      "url": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/enterprise/ccna/index.html",
+      "verification": "verified",
+      "scope": "Current certification landing page; objective-by-objective audit not performed.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "CISCO-CCNA-REFRESH",
+      "title": "Cisco: Get certified before the CCNA refresh",
+      "url": "https://blogs.cisco.com/learning/stay-on-track-get-certified-before-the-ccna-refresh",
+      "verification": "verified",
+      "scope": "Current v1.1 exam available through February 2, 2027; reverify future blueprint before booking.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "CISCO-CCNP",
+      "title": "Cisco CCNP Enterprise",
+      "url": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/enterprise/ccnp-enterprise/index.html",
+      "verification": "verified",
+      "scope": "Enterprise infrastructure, assurance, security, automation, and related scope.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "CISCO-CCIE",
+      "title": "Cisco CCIE Enterprise Infrastructure",
+      "url": "https://www.cisco.com/site/us/en/learn/training-certifications/certifications/enterprise/ccie-enterprise-infrastructure/index.html",
+      "verification": "verified",
+      "scope": "Expert infrastructure track; generic curriculum is not equivalent to exam/lab preparation.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "JUNIPER-TRACKS",
+      "title": "Juniper certification tracks",
+      "url": "https://www.juniper.net/us/en/training/certification/tracks.html/1000.html",
+      "verification": "verified",
+      "scope": "Associate, specialist, professional, expert and separate technology tracks.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "AZURE-NETWORK",
+      "title": "Microsoft Azure Network Engineer Associate",
+      "url": "https://learn.microsoft.com/en-us/credentials/certifications/azure-network-engineer-associate/",
+      "verification": "verified",
+      "scope": "Core/hybrid networking, delivery, private service access, and security scope.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "PALO-RETIREMENT",
+      "title": "Palo Alto Networks: certification release and retirement notice",
+      "url": "https://live.paloaltonetworks.com/t5/news/new-security-service-edge-engineer-certification-upcoming/ta-p/997555",
+      "verification": "verified_notice",
+      "scope": "PCNSA retirement January 31, 2025; current replacement path must be selected and reverified.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "ISC2-CISSP",
+      "title": "ISC2 CISSP",
+      "url": "https://www.isc2.org/certifications/cissp",
+      "verification": "verified",
+      "scope": "Broad eight-domain security certification, not a networking-only successor credential.",
+      "retrieved_on": "2026-10-29",
+      "attempted_on": "2026-10-29"
+    },
+    {
+      "id": "COMPTIA-NETWORK",
+      "title": "CompTIA Network+ official landing page",
+      "url": "https://www.comptia.org/en-us/certifications/network/",
+      "verification": "retrieval_failed",
+      "scope": "Do not label a current exam version or exact objectives verified from this build. Verify before exam-specific preparation.",
+      "retrieved_on": null,
+      "attempted_on": "2026-10-29"
+    }
+  ]
+}

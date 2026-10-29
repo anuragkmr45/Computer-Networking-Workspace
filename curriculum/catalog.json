@@ -1,0 +1,789 @@
+{
+  "schema_version": 1,
+  "version": "1.0",
+  "created_at": "2026-10-29",
+  "scope_note": "Tutor-designed expansion, not extracted lecture content or audited certification completeness.",
+  "modules": [
+    {
+      "id": "M01",
+      "title": "Networking mental models",
+      "file": "curriculum/01-foundations.md",
+      "prerequisites": [],
+      "topics": [
+        {
+          "id": "M01.01",
+          "title": "Hosts, interfaces, links, and protocols"
+        },
+        {
+          "id": "M01.02",
+          "title": "Bits, bytes, rates, and units"
+        },
+        {
+          "id": "M01.03",
+          "title": "Encapsulation and protocol data units"
+        },
+        {
+          "id": "M01.04",
+          "title": "Addresses, ports, paths, and delivery scope"
+        },
+        {
+          "id": "M01.05",
+          "title": "Copper, fiber, radio, duplex, and link negotiation"
+        },
+        {
+          "id": "M01.06",
+          "title": "Topologies, failure domains, and network components"
+        },
+        {
+          "id": "M01.07",
+          "title": "Latency, throughput, goodput, jitter, and loss"
+        },
+        {
+          "id": "M01.08",
+          "title": "Packet switching versus circuit switching"
+        }
+      ],
+      "source_ids": [
+        "RFC1122",
+        "RFC9293"
+      ]
+    },
+    {
+      "id": "M02",
+      "title": "Ethernet, ARP, switching, and local networks",
+      "file": "curriculum/02-local-networks.md",
+      "prerequisites": [
+        "M01"
+      ],
+      "topics": [
+        {
+          "id": "M02.01",
+          "title": "Ethernet frames and MAC address scope"
+        },
+        {
+          "id": "M02.02",
+          "title": "Source-MAC learning, known unicast, and flooding"
+        },
+        {
+          "id": "M02.03",
+          "title": "ARP discovery, caching, and next-hop resolution"
+        },
+        {
+          "id": "M02.04",
+          "title": "VLANs, access ports, trunks, and broadcast domains"
+        },
+        {
+          "id": "M02.05",
+          "title": "Loops, STP/RSTP, and convergence"
+        },
+        {
+          "id": "M02.06",
+          "title": "Link aggregation and first-hop boundaries"
+        },
+        {
+          "id": "M02.07",
+          "title": "Wi-Fi association, shared medium, channels, and roaming"
+        },
+        {
+          "id": "M02.08",
+          "title": "Local-delivery failures and table-by-table diagnosis"
+        }
+      ],
+      "source_ids": [
+        "RFC826",
+        "CISCO-ARP",
+        "CISCO-SWITCH",
+        "IP-NEIGH"
+      ]
+    },
+    {
+      "id": "M03",
+      "title": "IPv4, IPv6, and address planning",
+      "file": "curriculum/03-addressing.md",
+      "prerequisites": [
+        "M01"
+      ],
+      "topics": [
+        {
+          "id": "M03.01",
+          "title": "IPv4 binary and dotted-decimal representation"
+        },
+        {
+          "id": "M03.02",
+          "title": "CIDR, masks, on-link tests, and network addresses"
+        },
+        {
+          "id": "M03.03",
+          "title": "Subnet sizing, VLSM, and summarization"
+        },
+        {
+          "id": "M03.04",
+          "title": "Special-use addresses, /31, /32, and broadcast caveats"
+        },
+        {
+          "id": "M03.05",
+          "title": "DHCP lease lifecycle and configuration delivery"
+        },
+        {
+          "id": "M03.06",
+          "title": "IPv6 notation, prefixes, scopes, and address types"
+        },
+        {
+          "id": "M03.07",
+          "title": "IPv6 neighbor discovery, router advertisements, and SLAAC"
+        },
+        {
+          "id": "M03.08",
+          "title": "NAT/PAT, address conservation, and end-to-end implications"
+        }
+      ],
+      "source_ids": [
+        "PY-IPADDRESS",
+        "RFC1122",
+        "AWS-VPC"
+      ]
+    },
+    {
+      "id": "M04",
+      "title": "Forwarding and routing foundations",
+      "file": "curriculum/04-routing.md",
+      "prerequisites": [
+        "M02",
+        "M03"
+      ],
+      "topics": [
+        {
+          "id": "M04.01",
+          "title": "Connected routes, default routes, and longest-prefix match"
+        },
+        {
+          "id": "M04.02",
+          "title": "Next hops, recursive resolution, and forwarding tables"
+        },
+        {
+          "id": "M04.03",
+          "title": "Control plane versus data plane"
+        },
+        {
+          "id": "M04.04",
+          "title": "ICMP, TTL/hop limit, traceroute, and diagnostic limitations"
+        },
+        {
+          "id": "M04.05",
+          "title": "MTU, IPv4 fragmentation, and path-MTU discovery"
+        },
+        {
+          "id": "M04.06",
+          "title": "Static routes, route preferences, and equal-cost paths"
+        },
+        {
+          "id": "M04.07",
+          "title": "Dijkstra and Bellman-Ford on small topologies"
+        },
+        {
+          "id": "M04.08",
+          "title": "Return paths, asymmetric routing, and black holes"
+        }
+      ],
+      "source_ids": [
+        "RFC1812",
+        "RFC1122"
+      ]
+    },
+    {
+      "id": "M05",
+      "title": "Reliability, transport, and congestion",
+      "file": "curriculum/05-transport.md",
+      "prerequisites": [
+        "M04"
+      ],
+      "topics": [
+        {
+          "id": "M05.01",
+          "title": "Error detection, checksums, and CRC intuition"
+        },
+        {
+          "id": "M05.02",
+          "title": "Stop-and-Wait, Go-Back-N, and Selective Repeat models"
+        },
+        {
+          "id": "M05.03",
+          "title": "UDP datagrams and application responsibilities"
+        },
+        {
+          "id": "M05.04",
+          "title": "TCP byte streams, segmentation, and multiplexing"
+        },
+        {
+          "id": "M05.05",
+          "title": "TCP handshake, teardown, and state machine"
+        },
+        {
+          "id": "M05.06",
+          "title": "Sequence numbers, ACKs, loss, and reordering"
+        },
+        {
+          "id": "M05.07",
+          "title": "Flow control, windows, and bandwidth-delay product"
+        },
+        {
+          "id": "M05.08",
+          "title": "Congestion control, fairness, ECN, and buffering"
+        },
+        {
+          "id": "M05.09",
+          "title": "Retransmission timing and recovery mechanisms"
+        },
+        {
+          "id": "M05.10",
+          "title": "QUIC fundamentals and transport evolution"
+        }
+      ],
+      "source_ids": [
+        "RFC9293",
+        "CS144",
+        "UMASS-LABS"
+      ]
+    },
+    {
+      "id": "M06",
+      "title": "DNS, HTTP, TLS, and application paths",
+      "file": "curriculum/06-application-protocols.md",
+      "prerequisites": [
+        "M05"
+      ],
+      "topics": [
+        {
+          "id": "M06.01",
+          "title": "DNS hierarchy, resolution, caching, and negative answers"
+        },
+        {
+          "id": "M06.02",
+          "title": "DNS records, delegation, split DNS, and failure modes"
+        },
+        {
+          "id": "M06.03",
+          "title": "HTTP/1.1 framing, persistence, proxies, and connection reuse"
+        },
+        {
+          "id": "M06.04",
+          "title": "HTTP/2 streams, multiplexing, compression, and head-of-line effects"
+        },
+        {
+          "id": "M06.05",
+          "title": "HTTP/3 and QUIC mapping"
+        },
+        {
+          "id": "M06.06",
+          "title": "TLS certificates, trust, handshake, and forward secrecy"
+        },
+        {
+          "id": "M06.07",
+          "title": "L4/L7 load balancing, reverse proxies, CDNs, and health checks"
+        },
+        {
+          "id": "M06.08",
+          "title": "Supporting services: time, email, file transfer, and service discovery"
+        },
+        {
+          "id": "M06.09",
+          "title": "Application timeouts, retries, idempotency, and connection pools"
+        }
+      ],
+      "source_ids": [
+        "CHAI-INDEX",
+        "UMASS-LABS",
+        "RFC9293"
+      ]
+    },
+    {
+      "id": "M07",
+      "title": "Linux networking and socket programming",
+      "file": "curriculum/07-linux-host.md",
+      "prerequisites": [
+        "M04",
+        "M05"
+      ],
+      "topics": [
+        {
+          "id": "M07.01",
+          "title": "Socket lifecycle, bind, connect, listen, accept, and close"
+        },
+        {
+          "id": "M07.02",
+          "title": "Ports, file descriptors, buffers, and readiness models"
+        },
+        {
+          "id": "M07.03",
+          "title": "Host routes, policy routing, source selection, and neighbors"
+        },
+        {
+          "id": "M07.04",
+          "title": "Network namespaces, veth pairs, bridges, and virtual interfaces"
+        },
+        {
+          "id": "M07.05",
+          "title": "Netfilter/nftables, connection tracking, and host NAT"
+        },
+        {
+          "id": "M07.06",
+          "title": "Receive/transmit paths and packet capture location"
+        },
+        {
+          "id": "M07.07",
+          "title": "Socket options, keepalives, backlog, and resource limits"
+        },
+        {
+          "id": "M07.08",
+          "title": "Permissions, capabilities, and reproducible host labs"
+        }
+      ],
+      "source_ids": [
+        "IP-NETNS",
+        "IP-NEIGH",
+        "LINUX-SCALING",
+        "RFC9293"
+      ]
+    },
+    {
+      "id": "M08",
+      "title": "Measurement, performance, and troubleshooting",
+      "file": "curriculum/08-observability.md",
+      "prerequisites": [
+        "M05",
+        "M07"
+      ],
+      "topics": [
+        {
+          "id": "M08.01",
+          "title": "Hypothesis-driven troubleshooting and layered tests"
+        },
+        {
+          "id": "M08.02",
+          "title": "Packet capture, counters, logs, metrics, and trace correlation"
+        },
+        {
+          "id": "M08.03",
+          "title": "Latency distributions, throughput, goodput, and bottlenecks"
+        },
+        {
+          "id": "M08.04",
+          "title": "Queues, buffering, Little's-law intuition, and saturation"
+        },
+        {
+          "id": "M08.05",
+          "title": "Loss, retransmissions, reordering, and duplicate observations"
+        },
+        {
+          "id": "M08.06",
+          "title": "Capture offloads, timestamp limitations, and false conclusions"
+        },
+        {
+          "id": "M08.07",
+          "title": "DNS, TCP, TLS, and application timing breakdowns"
+        },
+        {
+          "id": "M08.08",
+          "title": "Incident evidence, reproducibility, and verification of a fix"
+        }
+      ],
+      "source_ids": [
+        "LINUX-SCALING",
+        "UMASS-LABS",
+        "RFC9293"
+      ]
+    },
+    {
+      "id": "M09",
+      "title": "Enterprise routing and resilience",
+      "file": "curriculum/09-enterprise-routing.md",
+      "prerequisites": [
+        "M04",
+        "M08"
+      ],
+      "topics": [
+        {
+          "id": "M09.01",
+          "title": "OSPF neighbors, areas, link state, and path selection"
+        },
+        {
+          "id": "M09.02",
+          "title": "BGP sessions, announcements, attributes, and policy"
+        },
+        {
+          "id": "M09.03",
+          "title": "Route redistribution, filtering, and loop prevention"
+        },
+        {
+          "id": "M09.04",
+          "title": "Summarization, multi-homing, and failure containment"
+        },
+        {
+          "id": "M09.05",
+          "title": "IPv6 routing and dual-stack migration"
+        },
+        {
+          "id": "M09.06",
+          "title": "Gateway redundancy, BFD, and convergence trade-offs"
+        },
+        {
+          "id": "M09.07",
+          "title": "Multicast foundations, group membership, and distribution"
+        },
+        {
+          "id": "M09.08",
+          "title": "Routing security, route validation, and change verification"
+        }
+      ],
+      "source_ids": [
+        "CISCO-CCNP",
+        "JUNIPER-TRACKS",
+        "RFC1812"
+      ]
+    },
+    {
+      "id": "M10",
+      "title": "Network security, WANs, and QoS",
+      "file": "curriculum/10-security-wan.md",
+      "prerequisites": [
+        "M06",
+        "M09"
+      ],
+      "topics": [
+        {
+          "id": "M10.01",
+          "title": "Trust boundaries, segmentation, and least-privilege flows"
+        },
+        {
+          "id": "M10.02",
+          "title": "ACLs, stateful firewalls, and policy verification"
+        },
+        {
+          "id": "M10.03",
+          "title": "IPsec/IKE concepts, site-to-site VPNs, and remote access"
+        },
+        {
+          "id": "M10.04",
+          "title": "Identity, administrative access, AAA, and secure management"
+        },
+        {
+          "id": "M10.05",
+          "title": "WAN link choices, SD-WAN, and overlay trade-offs"
+        },
+        {
+          "id": "M10.06",
+          "title": "QoS classification, policing, shaping, and scheduling"
+        },
+        {
+          "id": "M10.07",
+          "title": "Wireless security and enterprise access controls"
+        },
+        {
+          "id": "M10.08",
+          "title": "Defensive monitoring, abuse resilience, and safe change plans"
+        }
+      ],
+      "source_ids": [
+        "CISCO-CCNP",
+        "ISC2-CISSP",
+        "PALO-RETIREMENT"
+      ]
+    },
+    {
+      "id": "M11",
+      "title": "AWS, hybrid, and multi-cloud networking",
+      "file": "curriculum/11-aws-hybrid.md",
+      "prerequisites": [
+        "M08",
+        "M09",
+        "M10"
+      ],
+      "topics": [
+        {
+          "id": "M11.01",
+          "title": "VPCs, subnets, routing, address planning, and availability zones"
+        },
+        {
+          "id": "M11.02",
+          "title": "Security groups, network ACLs, and end-to-end path reasoning"
+        },
+        {
+          "id": "M11.03",
+          "title": "Internet/NAT gateways, private access, and VPC endpoints"
+        },
+        {
+          "id": "M11.04",
+          "title": "Route 53, hybrid DNS, and resolution boundaries"
+        },
+        {
+          "id": "M11.05",
+          "title": "Load balancers, global delivery, and application connectivity"
+        },
+        {
+          "id": "M11.06",
+          "title": "Peering, Transit Gateway, VPN, and Direct Connect concepts"
+        },
+        {
+          "id": "M11.07",
+          "title": "Multi-account/multi-region isolation, observability, and costs"
+        },
+        {
+          "id": "M11.08",
+          "title": "IPv6, migration, IaC validation, and disaster recovery"
+        },
+        {
+          "id": "M11.09",
+          "title": "Azure comparison branch: VNet, hybrid links, private access, delivery, security"
+        }
+      ],
+      "source_ids": [
+        "AWS-VPC",
+        "AWS-ANS",
+        "AZURE-NETWORK"
+      ]
+    },
+    {
+      "id": "M12",
+      "title": "Docker and Kubernetes networking",
+      "file": "curriculum/12-containers.md",
+      "prerequisites": [
+        "M06",
+        "M07",
+        "M10"
+      ],
+      "topics": [
+        {
+          "id": "M12.01",
+          "title": "Container network isolation and runtime bridge behavior"
+        },
+        {
+          "id": "M12.02",
+          "title": "Pod networking, CNI responsibility, and IP address management"
+        },
+        {
+          "id": "M12.03",
+          "title": "Services, endpoints, kube-proxy alternatives, and load balancing"
+        },
+        {
+          "id": "M12.04",
+          "title": "Cluster DNS, ingress, and Gateway API"
+        },
+        {
+          "id": "M12.05",
+          "title": "NetworkPolicy and implementation-dependent enforcement"
+        },
+        {
+          "id": "M12.06",
+          "title": "Overlays, routing, MTU, egress, and NAT"
+        },
+        {
+          "id": "M12.07",
+          "title": "Service mesh trade-offs and mTLS boundaries"
+        },
+        {
+          "id": "M12.08",
+          "title": "Cross-node debugging, observability, and upgrade implications"
+        }
+      ],
+      "source_ids": [
+        "K8S-NETWORK",
+        "IP-NETNS"
+      ]
+    },
+    {
+      "id": "M13",
+      "title": "Automation, configuration, and verification",
+      "file": "curriculum/13-automation.md",
+      "prerequisites": [
+        "M07",
+        "M09",
+        "M10"
+      ],
+      "topics": [
+        {
+          "id": "M13.01",
+          "title": "Structured state, source of truth, and configuration models"
+        },
+        {
+          "id": "M13.02",
+          "title": "APIs, NETCONF/RESTCONF/gNMI concepts, and telemetry"
+        },
+        {
+          "id": "M13.03",
+          "title": "Python/TypeScript tooling and parsing reliable outputs"
+        },
+        {
+          "id": "M13.04",
+          "title": "Configuration management and infrastructure as code"
+        },
+        {
+          "id": "M13.05",
+          "title": "Idempotency, drift, secrets, and least-privilege credentials"
+        },
+        {
+          "id": "M13.06",
+          "title": "Unit/integration checks and network intent validation"
+        },
+        {
+          "id": "M13.07",
+          "title": "Change pipelines, staged rollout, rollback, and audit"
+        },
+        {
+          "id": "M13.08",
+          "title": "Safe use of AI assistance and verification of generated configuration"
+        }
+      ],
+      "source_ids": [
+        "CISCO-CCNP",
+        "JUNIPER-TRACKS",
+        "PY-IPADDRESS"
+      ]
+    },
+    {
+      "id": "M14",
+      "title": "Data-center fabrics and storage connectivity",
+      "file": "curriculum/14-data-center.md",
+      "prerequisites": [
+        "M09",
+        "M12",
+        "M13"
+      ],
+      "topics": [
+        {
+          "id": "M14.01",
+          "title": "Leaf-spine topology, ECMP, and capacity planning"
+        },
+        {
+          "id": "M14.02",
+          "title": "Underlay/overlay separation and failure visibility"
+        },
+        {
+          "id": "M14.03",
+          "title": "VXLAN/EVPN concepts and tenant isolation"
+        },
+        {
+          "id": "M14.04",
+          "title": "Anycast gateways, multi-homing, and control-plane state"
+        },
+        {
+          "id": "M14.05",
+          "title": "Storage-networking foundations and traffic characteristics"
+        },
+        {
+          "id": "M14.06",
+          "title": "Multi-site fabric extension and failure-domain trade-offs"
+        },
+        {
+          "id": "M14.07",
+          "title": "Oversubscription, hotspots, and telemetry"
+        },
+        {
+          "id": "M14.08",
+          "title": "Fabric migrations and operational validation"
+        }
+      ],
+      "source_ids": [
+        "CISCO-CCIE",
+        "JUNIPER-TRACKS"
+      ]
+    },
+    {
+      "id": "M15",
+      "title": "Host hardware, high-performance, and AI networking",
+      "file": "curriculum/15-high-performance.md",
+      "prerequisites": [
+        "M07",
+        "M08",
+        "M14"
+      ],
+      "topics": [
+        {
+          "id": "M15.01",
+          "title": "NIC queues, DMA, interrupts, NAPI, and CPU locality"
+        },
+        {
+          "id": "M15.02",
+          "title": "RSS/RPS/RFS/XPS and scaling measurements"
+        },
+        {
+          "id": "M15.03",
+          "title": "Checksum/segmentation offloads and capture interpretation"
+        },
+        {
+          "id": "M15.04",
+          "title": "eBPF/XDP concepts, observability, and safe deployment"
+        },
+        {
+          "id": "M15.05",
+          "title": "Kernel bypass, zero-copy claims, and application trade-offs"
+        },
+        {
+          "id": "M15.06",
+          "title": "RDMA/RoCE/InfiniBand concepts and congestion requirements"
+        },
+        {
+          "id": "M15.07",
+          "title": "AI/HPC communication patterns and collective operations"
+        },
+        {
+          "id": "M15.08",
+          "title": "Benchmark validity, tail latency, fairness, and tuning rollback"
+        }
+      ],
+      "source_ids": [
+        "LINUX-SCALING",
+        "AWS-VPC"
+      ]
+    },
+    {
+      "id": "M16",
+      "title": "Principal-level design and operational leadership",
+      "file": "curriculum/16-principal-design.md",
+      "prerequisites": [
+        "M08",
+        "M11",
+        "M12",
+        "M13"
+      ],
+      "topics": [
+        {
+          "id": "M16.01",
+          "title": "Requirements, stakeholder needs, and measurable success"
+        },
+        {
+          "id": "M16.02",
+          "title": "Availability goals, failure domains, and correlated risks"
+        },
+        {
+          "id": "M16.03",
+          "title": "Capacity forecasting, headroom, and cost models"
+        },
+        {
+          "id": "M16.04",
+          "title": "Security, compliance interfaces, and operational ownership"
+        },
+        {
+          "id": "M16.05",
+          "title": "Architecture alternatives and decision records"
+        },
+        {
+          "id": "M16.06",
+          "title": "Migration, compatibility, rollback, and incident readiness"
+        },
+        {
+          "id": "M16.07",
+          "title": "Cross-team communication, review, and technical strategy"
+        },
+        {
+          "id": "M16.08",
+          "title": "Capstone: end-to-end hybrid platform design and failure review"
+        }
+      ],
+      "source_ids": [
+        "AWS-VPC",
+        "K8S-NETWORK",
+        "CISCO-CCIE"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "Q01",
+      "topic_id": "M02.03",
+      "prompt": "Explain why an ordinary initial ARP request is broadcast and why its reply can normally be unicast."
+    },
+    {
+      "id": "Q02",
+      "topic_id": "M02.03",
+      "prompt": "A laptop sends to a remote server through a gateway. Which IPv4 address does it resolve with ARP? Which IP remains the packet destination? State the no-NAT assumption."
+    },
+    {
+      "id": "Q03",
+      "topic_id": "M02.03",
+      "prompt": "The next-hop MAC is already usable in the neighbor table. Is a fresh ARP discovery required before every packet? What evidence would you inspect rather than guess?"
+    },
+    {
+      "id": "Q04",
+      "topic_id": "M03.02",
+      "prompt": "For laptop 192.168.10.20/16 and target 192.168.11.80, calculate both network addresses using the laptop mask. What ARP target follows under connected/default-route assumptions?"
+    },
+    {
+      "id": "Q05",
+      "topic_id": "M03.02",
+      "prompt": "Repeat Q04 with /24. Explain what changes and what does not change in the first data frame/packet."
+    },
+    {
+      "id": "Q06",
+      "topic_id": "M02.02",
+      "prompt": "One switch: MAC-L on port 1, MAC-S on port 2, MAC-X on port 3; same VLAN; empty MAC table. L broadcasts ARP, S replies to L, then L sends data to S. Show the learned entries and outgoing ports after each step."
+    },
+    {
+      "id": "Q07",
+      "topic_id": "M02.03",
+      "prompt": "The selected next hop is on-link but no ARP reply arrives. Why does this not by itself cause the host to use its default gateway? Distinguish route choice from neighbor discovery."
+    },
+    {
+      "id": "Q08",
+      "topic_id": "M03.02",
+      "prompt": "Two hosts calculate the same IP prefix but are in isolated VLANs with no bridging or proxy. Does matching the prefix guarantee ARP success? What assumption was missing?"
+    },
+    {
+      "id": "Q09",
+      "topic_id": "M02.02",
+      "prompt": "The sender has a valid ARP entry but the switch has an empty MAC table. Explain why a unicast data frame may be flooded and why this is not an ARP broadcast."
+    },
+    {
+      "id": "Q10",
+      "topic_id": "M04.01",
+      "prompt": "A host has a connected 192.168.0.0/16 route and a more-specific route for 192.168.11.80/32 via a reachable router. Which matching route wins in an ordinary longest-prefix lookup? Why is the simple same-subnet shortcut insufficient?"
+    },
+    {
+      "id": "Q11",
+      "topic_id": "M01.03",
+      "prompt": "An application makes two TCP send calls. Must the receiver get exactly two receive calls with the same boundaries? Explain what TCP provides instead."
+    },
+    {
+      "id": "Q12",
+      "topic_id": "M02.03",
+      "prompt": "Why is \"ARP message contains IP addresses\" not the same as \"ARP is carried inside an IP packet\"? Draw the encapsulation for ARP versus TCP data."
+    }
+  ]
+}

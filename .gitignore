@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+*.pcap
+*.pcapng
+private/
+lab-output/
+.DS_Store
+Thumbs.db
+*.pem
+*.key
+*.tfstate
+*.tfstate.*
+.terraform/

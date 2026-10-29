@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARP &amp; next-hop walkthrough · Networking Mastery</title>
+<style>
+:root{--ink:#172d3b;--muted:#526875;--paper:#f4f6f5;--line:#d5dfdd;--accent:#116e66;--light:#e1f2ed;--amber:#8c5415}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}header{background:var(--ink);color:white;padding:32px max(24px,calc((100vw - 1120px)/2))}header p{max-width:760px;color:#d4e3e5;margin-bottom:0}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:12px;font-weight:700;color:#a8d9cc}h1{font-size:clamp(25px,4vw,38px);line-height:1.2;margin:10px 0}main{max-width:1168px;padding:24px;margin:auto}h2{font-size:20px;margin:0 0 12px}h3{font-size:16px;margin:0 0 8px}.grid{display:grid;grid-template-columns:310px 1fr;gap:20px}.card{background:white;border:1px solid var(--line);border-radius:12px;padding:22px;margin-bottom:20px}label{display:block;margin:14px 0 6px;font-weight:600}select,button{font:inherit}select{width:100%;padding:9px;border:1px solid #a9bdb9;border-radius:7px;background:white}button{padding:10px 15px;border:1px solid var(--accent);border-radius:7px;background:white;color:var(--accent);font-weight:600;cursor:pointer}button.primary{background:var(--accent);color:white}button:disabled{opacity:.45;cursor:default}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #ddae54;outline-offset:3px}.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.check{font-weight:400;display:flex;align-items:flex-start;gap:9px}.check input{margin-top:6px}.small{font-size:13px;color:var(--muted)}.pill{display:inline-block;font-size:12px;background:var(--light);color:var(--accent);padding:4px 9px;border-radius:20px;font-weight:700}.stage{border-left:4px solid var(--accent);padding:4px 0 4px 16px;margin:20px 0;min-height:120px}.stage h2{margin-bottom:8px}.stage p{margin:0}.path{display:flex;align-items:center;justify-content:space-between;gap:10px;position:relative;margin:26px 0}.node{flex:1;background:#f3f7f6;border:1px solid var(--line);border-radius:10px;padding:14px 10px;text-align:center;min-height:90px}.node strong{display:block}.node span{font-size:12px}.arrow{color:var(--accent);font-size:25px}.active{border:2px solid var(--accent);background:var(--light)}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f7f6;border-radius:8px;padding:16px;font:14px/1.65 ui-monospace,Consolas,monospace}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;border-bottom:1px solid var(--line);padding:9px 5px}th{color:var(--muted)}.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.warning{padding:12px;background:#fff7e9;border-radius:8px;font-size:13px;color:#724a1c}.dots{display:flex;gap:8px;margin:15px 0}.dot{height:6px;flex:1;border-radius:10px;background:#dce5e2}.dot.done{background:var(--accent)}footer{margin:15px 0;color:var(--muted);font-size:13px}a{color:var(--accent)}.pulse .active{animation:pulse 1s ease-in-out 1}@keyframes pulse{50%{box-shadow:0 0 0 7px #b8dfd1}}@media(prefers-reduced-motion:reduce){*{animation:none!important}}@media(max-width:850px){.grid{grid-template-columns:1fr}.split{grid-template-columns:1fr}.path{gap:5px}.node{padding:10px 5px}main{padding:15px}.card{padding:17px}}
+</style>
+</head>
+<body>
+<header><div class="eyebrow">Computer Networking Mastery / Offline walkthrough</div><h1>Who receives the frame next?</h1><p>Follow subnet reasoning, route selection, ARP discovery, and Ethernet delivery—one visible step at a time.</p></header>
+<main>
+<div class="grid">
+<aside>
+<section class="card"><h2>Set the scenario</h2><p class="small">This is a teaching model, not a packet capture. All data is fixed and synthetic.</p>
+<label for="prefix">Laptop prefix</label><select id="prefix"><option value="24">192.168.10.20 /24</option><option value="16">192.168.10.20 /16</option></select>
+<p>Target server<br><strong>192.168.11.80</strong><br><span class="small">Default gateway: 192.168.10.1</span></p>
+<label class="check"><input type="checkbox" id="cached"><span>Usable next-hop MAC is already cached</span></label>
+<label class="check"><input type="checkbox" id="responds" checked><span>Selected next hop responds to ARP</span></label>
+<div class="warning">Only connected and default routes. No proxy ARP, NAT, VPN, or policy exceptions. Assume the selected next hop really shares the local link.</div>
+</section>
+<section class="card"><h3>The distinction to remember</h3><p><strong>Route:</strong> choose the next hop.<br><strong>ARP:</strong> resolve its local MAC.<br><strong>Switch:</strong> forward by destination MAC.</p><p class="small">Changing a mask does not move a physical device or join VLANs. Prefix membership alone is not proof of reachability.</p></section>
+</aside>
+<div>
+<section class="card">
+<span class="pill" id="stepLabel">Stage 1 of 6</span><div class="dots" id="dots" aria-hidden="true"></div>
+<div class="stage" aria-live="polite"><h2 id="title"></h2><p id="explanation"></p></div>
+<div class="path" id="path" aria-label="Logical local-hop delivery sketch, not a complete physical topology">
+<div class="node" id="laptop"><strong>Laptop</strong><span>192.168.10.20<br>MAC-L</span></div><div class="arrow">→</div>
+<div class="node" id="switch"><strong>Switch</strong><span>One VLAN<br>Source learning</span></div><div class="arrow">→</div>
+<div class="node" id="nextHop"><strong>Next hop?</strong><span>Choose by route first</span></div>
+</div>
+<pre id="message"></pre>
+<div class="controls"><button id="back">Back</button><button id="next" class="primary">Next stage</button><button id="reset">Reset</button><button id="play">Play stages</button></div>
+</section>
+<div class="split">
+<section class="card"><h3>Laptop neighbor cache</h3><table><thead><tr><th>IPv4</th><th>MAC / status</th></tr></thead><tbody id="cacheRows"></tbody></table></section>
+<section class="card"><h3>Switch MAC table</h3><table><thead><tr><th>MAC</th><th>Port</th></tr></thead><tbody id="macRows"></tbody></table><p class="small">Starts empty. Learning comes from source frames, not from merely receiving a broadcast.</p></section>
+</div>
+</div>
+</div>
+<footer>This visualizer makes no network requests, writes no learning state, and has no account connection. Sources and full assumptions: <a href="../knowledge/03-arp.md">ARP notes</a> and <a href="../knowledge/04-switching.md">switching notes</a>. Markdown links may open as text depending on your browser.</footer>
+</main>
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+let step = 0, timer = null;
+function scenario(){
+  const local = $('prefix').value === '16';
+  return {local, cached:$('cached').checked, responds:$('responds').checked,
+    ip:local?'192.168.11.80':'192.168.10.1', mac:local?'MAC-S':'MAC-G',
+    owner:local?'Server':'Gateway LAN', mask:local?'255.255.0.0':'255.255.255.0'};
+}
+function render(){
+  const s=scenario();
+  const missing=!s.cached, failed=missing&&!s.responds;
+  const titles=['Predict before revealing','Calculate the prefix match','Select the next hop','Consult the neighbor cache','Resolve—or fail to resolve','Send the data—or stop'];
+  const explanations=[
+    'The application wants to reach 192.168.11.80. Predict which IP the laptop must resolve before sending an Ethernet frame.',
+    s.local?'The laptop mask produces 192.168.0.0 for both addresses. Its connected route treats the target as on-link.':'The mask produces 192.168.10.0 for the laptop and 192.168.11.0 for the target. The target is outside this connected prefix.',
+    s.local?'Under the stated routes, select the server itself. Its MAC is needed for this local Ethernet delivery.':'Under the stated routes, select the default gateway. Its local MAC is needed, while the IP target remains the server.',
+    s.cached?'A usable mapping exists. No initial ARP discovery is needed. The switch may still have an empty table.':'No usable mapping exists. Broadcast an ARP request containing the requested IP and the laptop’s own IP and MAC. The switch learns MAC-L on port 1.',
+    s.cached?'Reuse the existing mapping. This is a host cache result, not evidence that the switch already knows the destination port.':(s.responds?'The next-hop owner replies to MAC-L. The request supplied that return MAC. The laptop caches the mapping; the switch learns the replying source on port 2.':'No reply is received. Resolution may be retried, then fails; exact timers depend on the implementation. The route does not automatically change.'),
+    failed?'Without resolving this selected next hop, this example cannot send the intended unicast data frame. Do not invent a MAC or fall back to the gateway merely because ARP failed.':(s.cached?'The IP target is still the server. The frame targets the cached next-hop MAC. Because this switch table started empty, the unknown unicast is flooded within the VLAN.':'The IP packet targets the server; the Ethernet frame targets the resolved next-hop MAC. The switch now has the learned destination port.')
+  ];
+  $('stepLabel').textContent=`Stage ${step+1} of 6`;
+  $('dots').innerHTML=Array.from({length:6},(_,i)=>`<span class="dot ${i<=step?'done':''}"></span>`).join('');
+  $('title').textContent=titles[step]; $('explanation').textContent=explanations[step];
+  $('nextHop').innerHTML=step>=2?`<strong>${s.owner}</strong><span>${s.ip}<br>${step>=4&&!failed?s.mac:'MAC not yet shown'}</span>`:'<strong>Next hop?</strong><span>Choose by route first</span>';
+  ['laptop','switch','nextHop'].forEach(id=>$(id).classList.remove('active'));
+  if(step<=2) $('laptop').classList.add('active');
+  else if(step===3&&!s.cached) $('switch').classList.add('active');
+  else if(step===4&&!failed) $('nextHop').classList.add('active');
+  else $('laptop').classList.add('active');
+  let message='Final IP destination: 192.168.11.80\nNext local recipient: reveal the route decision first.';
+  if(step===1)message=`Mask: ${s.mask}\nLaptop network: ${s.local?'192.168.0.0':'192.168.10.0'}\nTarget masked:  ${s.local?'192.168.0.0':'192.168.11.0'}`;
+  if(step===2)message=`Selected next-hop IPv4: ${s.ip}\nFinal destination IPv4: 192.168.11.80`;
+  if(step===3)message=s.cached?`Usable mapping: ${s.ip} → ${s.mac}\nARP discovery skipped.`:`Ethernet destination: FF:FF:FF:FF:FF:FF\nARP: Who has ${s.ip}?\nSender: 192.168.10.20 / MAC-L`;
+  if(step===4)message=s.cached?`Reuse: ${s.ip} → ${s.mac}`:(failed?'No reply → retry/failure handling\nNo automatic default-route fallback.':`Ethernet destination: MAC-L\nARP reply: ${s.ip} is at ${s.mac}`);
+  if(step===5)message=failed?'Resolution failed in this scenario.\nNo intended unicast data frame can be sent.':`Ethernet: MAC-L → ${s.mac}\nIPv4: 192.168.10.20 → 192.168.11.80\n${s.cached?'Switch: unknown-unicast flooding (table started empty).':'Switch: learned destination → port 2.'}`;
+  $('message').textContent=message;
+  const usable=s.cached||(step>=4&&s.responds);
+  $('cacheRows').innerHTML=step<2?'<tr><td colspan="2">Next hop not yet selected</td></tr>':`<tr><td>${s.ip}</td><td>${usable?s.mac:(step>=4?'Resolution failed':step>=3?'Incomplete':'Not found')}</td></tr>`;
+  let rows='';
+  if((!s.cached&&step>=3)||(s.cached&&step>=5))rows+='<tr><td>MAC-L</td><td>1</td></tr>';
+  if(!s.cached&&s.responds&&step>=4)rows+=`<tr><td>${s.mac}</td><td>2</td></tr>`;
+  $('macRows').innerHTML=rows||'<tr><td colspan="2">No learned entries yet</td></tr>';
+  $('back').disabled=step===0; $('next').disabled=step===5;
+  $('responds').disabled=s.cached;
+  $('path').classList.remove('pulse');void $('path').offsetWidth;$('path').classList.add('pulse');
+}
+function stop(){if(timer!==null){clearInterval(timer);timer=null;}$('play').textContent='Play stages';}
+function reset(){stop();step=0;render();}
+$('next').addEventListener('click',()=>{stop();step=Math.min(5,step+1);render();});
+$('back').addEventListener('click',()=>{stop();step=Math.max(0,step-1);render();});
+$('reset').addEventListener('click',reset);
+['prefix','cached','responds'].forEach(id=>$(id).addEventListener('change',reset));
+$('play').addEventListener('click',()=>{if(timer!==null){stop();return;}if(step===5){step=0;render();}$('play').textContent='Pause';timer=setInterval(()=>{step=Math.min(5,step+1);render();if(step===5)stop();},1800);});
+render();
+</script>
+</body>
+</html>
